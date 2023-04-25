@@ -10,6 +10,7 @@ import org.dungeon.room.MonsterRoom;
 import org.dungeon.room.RestRoom;
 import org.dungeon.room.Room;
 import org.dungeon.utils.MathUtils;
+import org.dungeon.utils.SystemUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,12 +22,8 @@ public class GameManager {
     public GameManager(int length) {
 
         for (int i = 0; i < length; i++) {
-//            Monster monster = new Monster(MathUtils.getNum(30), MathUtils.getNum(30), MathUtils.getNum(30), "김말숙");
-            Monster monster = new Monster(30, 30, 30, "말숙이");
-            MonsterRoom monsterRoom = new MonsterRoom(monster);
-            roomList.add(monsterRoom);
+            roomList.add(new MonsterRoom());
 
-            continue;
 //            int nonce = (int) Math.round(Math.random() * 10);
 //
 //            if (nonce >= 0 && nonce <= 5) {
@@ -53,15 +50,14 @@ public class GameManager {
     }
 
     public void start () {
-        int round = 0;
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("던전 게임을 시작합니다. 사용자의 이름을 입력해주세요.");
-        String name = scanner.nextLine();
-//        Player player = new Player(MathUtils.getNum(100), MathUtils.getNum(100), MathUtils.getNum(20), name);
+        int round = 1;
+        SystemUtils.echo("ADMIN: 던전 게임을 시작합니다. 사용자의 이름을 입력해주세요.");
+        String name = SystemUtils.getText();
         Player player = new Player(100, 50, 20, name);
         while (roomList.size() != round) {
+            SystemUtils.echo("ADMIN:  ** " + round + "라운드가 시작됩니다. **");
 
-            Room room = roomList.get(round);
+            Room room = roomList.get(round - 1);
             room.enterRoom(player);
 
             round++;

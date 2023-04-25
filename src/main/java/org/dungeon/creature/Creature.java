@@ -4,7 +4,9 @@ abstract public class Creature {
     private int health;
     private int attack;
     private int defense;
-    private final String name;
+    private String name;
+
+
 
     public Creature(int health, int attack, int defense, String name) {
         this.health = health;
@@ -39,5 +41,9 @@ abstract public class Creature {
 
     public void setDefense(int defense) {
         this.defense = defense;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

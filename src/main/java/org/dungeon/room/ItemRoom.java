@@ -14,4 +14,9 @@ public class ItemRoom implements Room{
     public void enterRoom(Player player) {
 
     }
+
+    @Override
+    public void introduce() {
+
+    }
 }
