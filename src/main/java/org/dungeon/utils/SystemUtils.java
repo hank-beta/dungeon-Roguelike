@@ -1,5 +1,6 @@
 package org.dungeon.utils;
 
+import org.dungeon.creature.Creature;
 import org.dungeon.creature.Monster;
 
 import java.util.Scanner;
@@ -21,8 +22,6 @@ public class SystemUtils {
         + "[" + monster.getName() + "] : " + monster.getMessage();
         encounter(message);
     }
-
-
 
     public static int selectMenu() {
         echo("플레이어는 세가지 선택을 할 수 있습니다.\n" +

@@ -2,8 +2,7 @@ package org.dungeon.room;
 
 import org.dungeon.creature.Monster;
 import org.dungeon.creature.Player;
-import org.dungeon.creature.monster.Goblin;
-import org.dungeon.creature.monster.MonsterRoomSpawner;
+import org.dungeon.creature.MonsterRoomSpawner;
 import org.dungeon.utils.FightUtils;
 import org.dungeon.utils.SystemUtils;
 
@@ -11,7 +10,7 @@ public class MonsterRoom implements Room {
     Monster monster;
 
     public MonsterRoom() {
-        this.monster = MonsterRoomSpawner.spawnMonsterRoom();
+        this.monster = MonsterRoomSpawner.spawn();
     }
 
     public void introduce() {
@@ -28,7 +27,9 @@ public class MonsterRoom implements Room {
         FightUtils.monsterAttack(player, monster);
     }
 
-
+    public void defenseMonster(Player player) {
+        FightUtils.playerDefense(player, monster);
+    }
 
     @Override
     public void enterRoom(Player player) {
@@ -39,6 +40,8 @@ public class MonsterRoom implements Room {
 
             if (selectNumber == 1) {
                 this.attackMonster(player);
+            } else if (selectNumber == 2) {
+                this.defenseMonster(player);
             }
 
             if (this.monster.getHealth() == 0) {

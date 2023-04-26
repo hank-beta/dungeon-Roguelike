@@ -1,10 +1,12 @@
-package org.dungeon.creature.monster;
+package org.dungeon.creature;
 
-import org.dungeon.creature.Monster;
+import org.dungeon.creature.monster.Goblin;
+import org.dungeon.creature.monster.Golem;
+import org.dungeon.creature.monster.Slime;
 import org.dungeon.utils.MathUtils;
 
 public class MonsterRoomSpawner {
-    public static Monster spawnMonsterRoom() {
+    public static Monster spawn() {
         int monsterNum = MathUtils.getNum(100);
 
         if (monsterNum > 50) {

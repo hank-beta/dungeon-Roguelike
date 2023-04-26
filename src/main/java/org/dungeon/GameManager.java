@@ -22,14 +22,13 @@ public class GameManager {
     public GameManager(int length) {
 
         for (int i = 0; i < length; i++) {
-            roomList.add(new MonsterRoom());
+            int nonce = (int) Math.round(Math.random() * 10);
 
-//            int nonce = (int) Math.round(Math.random() * 10);
-//
-//            if (nonce >= 0 && nonce <= 5) {
-//                Monster monster = new Monster(MathUtils.getNum(), MathUtils.getNum(), MathUtils.getNum(), "김말숙");
-//                MonsterRoom monsterRoom = new MonsterRoom(monster);
-//                roomList.add(monsterRoom);
+            if (nonce >= 0 && nonce <= 5) {
+                roomList.add(new MonsterRoom());
+            } else if (nonce > 5 && nonce <= 8) {
+
+            }
 //            } else if (nonce > 5 && nonce <= 8){
 //                Item item = new Potion();
 //                ItemRoom itemRoom = new ItemRoom(item);
@@ -54,11 +53,16 @@ public class GameManager {
         SystemUtils.echo("ADMIN: 던전 게임을 시작합니다. 사용자의 이름을 입력해주세요.");
         String name = SystemUtils.getText();
         Player player = new Player(100, 50, 20, name);
+
         while (roomList.size() != round) {
             SystemUtils.echo("ADMIN:  ** " + round + "라운드가 시작됩니다. **");
 
             Room room = roomList.get(round - 1);
             room.enterRoom(player);
+
+            if (player.getHealth() == 0) {
+                break;
+            }
 
             round++;
         }
